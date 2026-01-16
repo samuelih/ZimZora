@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+
+  --color-node-style: #8b5cf6;
+  --color-node-object: #3b82f6;
+  --color-node-color: #f59e0b;
+  --color-node-texture: #10b981;
+  --color-node-pose: #ec4899;
+  --color-node-lighting: #f97316;
+  --color-node-composition: #06b6d4;
+  --color-node-face: #ef4444;
+  --color-node-background: #84cc16;
+  --color-node-depth: #6366f1;
+  --color-node-negative: #64748b;
+
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+  --color-error: #ef4444;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .btn-md {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20;
+  }
+
+  .panel {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm;
+  }
+
+  .panel-header {
+    @apply px-4 py-3 border-b border-gray-200 font-semibold text-sm;
+  }
+
+  .panel-body {
+    @apply p-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .drag-none {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Focus visible utilities */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+
+  .focus-ring-inset {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-inset;
+  }
+
+  /* Skip link for keyboard navigation */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50;
+    @apply focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    @apply border-2 border-white;
+  }
+
+  .panel {
+    @apply border-2 border-gray-900;
+  }
+
+  kbd {
+    @apply border-2;
+  }
+}
+
+/* Focus indicators for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* React Flow overrides */
+.react-flow__node {
+  font-family: inherit;
+}
+
+.react-flow__controls {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.react-flow__controls-button {
+  background: #1e293b;
+  border-color: #334155;
+  fill: #e2e8f0;
+}
+
+.react-flow__controls-button:hover {
+  background: #334155;
+}
+
+.react-flow__minimap {
+  background: #1e293b;
+}
+
+/* Custom scrollbar for dark UI */
+.dark-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
