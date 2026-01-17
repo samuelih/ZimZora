@@ -8,8 +8,9 @@ import { RadialOrbitalUI } from './components/radial-orbital';
 import { NodeGraphUI } from './components/node-graph';
 import { RecipeIngredientUI } from './components/recipe';
 import { LayersPanelUI } from './components/layers';
+import { AgentsUI } from './components/agents';
 import { KeyboardShortcutsModal } from './components/shared/KeyboardShortcutsModal';
-import { Keyboard, HelpCircle } from 'lucide-react';
+import { Keyboard } from 'lucide-react';
 import './index.css';
 
 // Page transition variants
@@ -68,6 +69,8 @@ function App() {
           return <RecipeIngredientUI />;
         case 'layers':
           return <LayersPanelUI />;
+        case 'agents':
+          return <AgentsUI />;
         default:
           return <RecipeIngredientUI />;
       }
@@ -90,8 +93,8 @@ function App() {
     );
   };
 
-  // For dark-themed paradigms (orbital, node-graph, layers)
-  const isDarkParadigm = ['orbital', 'node-graph', 'layers'].includes(currentParadigm);
+  // For dark-themed paradigms (orbital, node-graph, layers, agents)
+  const isDarkParadigm = ['orbital', 'node-graph', 'layers', 'agents'].includes(currentParadigm);
 
   // Generation progress for header
   const isGenerating = generation.status === 'generating';

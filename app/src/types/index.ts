@@ -106,7 +106,10 @@ export interface GenerationState {
 }
 
 // Paradigm types
-export type ParadigmType = 'canvas' | 'orbital' | 'node-graph' | 'recipe' | 'layers';
+export type ParadigmType = 'canvas' | 'orbital' | 'node-graph' | 'recipe' | 'layers' | 'agents';
+
+// Re-export agent types
+export * from './agents';
 
 // Shared state
 export interface SharedState {

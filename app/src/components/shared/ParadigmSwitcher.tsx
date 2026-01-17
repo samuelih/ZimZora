@@ -8,7 +8,8 @@ import {
   GitBranch,
   ChefHat,
   Layers,
-  Keyboard
+  Keyboard,
+  Bot
 } from 'lucide-react';
 
 interface ParadigmSwitcherProps {
@@ -72,6 +73,15 @@ const paradigms: ParadigmOption[] = [
     description: 'Stack layers like Photoshop',
     shortcut: '5',
     previewDescription: 'Stack and blend layers with opacity control',
+  },
+  {
+    value: 'agents',
+    label: 'AI Agents',
+    shortLabel: 'Agents',
+    icon: Bot,
+    description: 'AI assistants help you create',
+    shortcut: '6',
+    previewDescription: 'Intelligent agents analyze and suggest improvements',
   },
 ];
 
@@ -149,6 +159,25 @@ function ParadigmPreview({ paradigm, isDark }: { paradigm: ParadigmType; isDark:
           <rect x="88" y="42" width="22" height="12" rx="2" fill={fgColor} opacity="0.5" />
         </svg>
       );
+    case 'agents':
+      return (
+        <svg width="120" height="70" viewBox="0 0 120 70" fill="none">
+          {/* Main workspace */}
+          <rect x="5" y="5" width="75" height="60" rx="3" fill={bgColor} />
+          <rect x="15" y="15" width="55" height="40" rx="4" fill={accentColor} opacity="0.3" />
+          {/* Agent panel */}
+          <rect x="85" y="5" width="30" height="60" rx="3" fill={bgColor} />
+          {/* Agent avatars */}
+          <circle cx="100" cy="18" r="8" fill="#10B981" />
+          <circle cx="100" cy="38" r="8" fill="#6366F1" />
+          <circle cx="100" cy="58" r="6" fill="#F59E0B" opacity="0.6" />
+          {/* Chat bubbles */}
+          <rect x="20" y="20" width="25" height="10" rx="3" fill={fgColor} />
+          <rect x="30" y="35" width="30" height="10" rx="3" fill={accentColor} />
+          {/* Sparkle */}
+          <path d="M65 25 L67 30 L72 32 L67 34 L65 39 L63 34 L58 32 L63 30 Z" fill="#F59E0B" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -171,6 +200,7 @@ export function ParadigmSwitcher({ value, onChange, className }: ParadigmSwitche
         '3': 'node-graph',
         '4': 'recipe',
         '5': 'layers',
+        '6': 'agents',
       };
 
       if (keyToParadigm[e.key]) {
