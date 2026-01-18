@@ -9,7 +9,7 @@ import {
   ChefHat,
   Layers,
   Keyboard,
-  Bot
+  Wand2
 } from 'lucide-react';
 
 interface ParadigmSwitcherProps {
@@ -75,13 +75,13 @@ const paradigms: ParadigmOption[] = [
     previewDescription: 'Stack and blend layers with opacity control',
   },
   {
-    value: 'agents',
-    label: 'AI Agents',
-    shortLabel: 'Agents',
-    icon: Bot,
-    description: 'AI assistants help you create',
+    value: 'studio',
+    label: 'Creative Studio',
+    shortLabel: 'Studio',
+    icon: Wand2,
+    description: 'Agentic commerce platform',
     shortcut: '6',
-    previewDescription: 'Intelligent agents analyze and suggest improvements',
+    previewDescription: 'Mix ideas, agent feedback loop, shop the look',
   },
 ];
 
@@ -159,23 +159,33 @@ function ParadigmPreview({ paradigm, isDark }: { paradigm: ParadigmType; isDark:
           <rect x="88" y="42" width="22" height="12" rx="2" fill={fgColor} opacity="0.5" />
         </svg>
       );
-    case 'agents':
+    case 'studio':
       return (
         <svg width="120" height="70" viewBox="0 0 120 70" fill="none">
-          {/* Main workspace */}
-          <rect x="5" y="5" width="75" height="60" rx="3" fill={bgColor} />
-          <rect x="15" y="15" width="55" height="40" rx="4" fill={accentColor} opacity="0.3" />
-          {/* Agent panel */}
-          <rect x="85" y="5" width="30" height="60" rx="3" fill={bgColor} />
-          {/* Agent avatars */}
-          <circle cx="100" cy="18" r="8" fill="#10B981" />
-          <circle cx="100" cy="38" r="8" fill="#6366F1" />
-          <circle cx="100" cy="58" r="6" fill="#F59E0B" opacity="0.6" />
-          {/* Chat bubbles */}
-          <rect x="20" y="20" width="25" height="10" rx="3" fill={fgColor} />
-          <rect x="30" y="35" width="30" height="10" rx="3" fill={accentColor} />
-          {/* Sparkle */}
-          <path d="M65 25 L67 30 L72 32 L67 34 L65 39 L63 34 L58 32 L63 30 Z" fill="#F59E0B" />
+          {/* Left: Mixing desk faders */}
+          <rect x="2" y="2" width="28" height="66" rx="3" fill={bgColor} />
+          <rect x="6" y="8" width="8" height="30" rx="2" fill={fgColor} />
+          <rect x="6" y="28" width="8" height="10" rx="2" fill={accentColor} />
+          <rect x="17" y="8" width="8" height="30" rx="2" fill={fgColor} />
+          <rect x="17" y="18" width="8" height="20" rx="2" fill="#10B981" />
+          {/* Center: Synthesis zone */}
+          <rect x="33" y="2" width="50" height="48" rx="3" fill={bgColor} />
+          <rect x="43" y="12" width="30" height="28" rx="4" fill={accentColor} opacity="0.6" />
+          <circle cx="58" cy="26" r="8" fill="#8B5CF6" opacity="0.8" />
+          {/* Right: Agent loop */}
+          <rect x="86" y="2" width="32" height="48" rx="3" fill={bgColor} />
+          <circle cx="95" cy="14" r="6" fill="#8B5CF6" />
+          <circle cx="109" cy="14" r="6" fill="#F59E0B" />
+          <circle cx="109" cy="28" r="6" fill="#10B981" />
+          <circle cx="95" cy="28" r="6" fill="#3B82F6" />
+          <path d="M95 20 L109 20" stroke={fgColor} strokeWidth="1" />
+          <path d="M109 20 L109 28" stroke={fgColor} strokeWidth="1" />
+          {/* Bottom: Products */}
+          <rect x="2" y="53" width="116" height="15" rx="3" fill={bgColor} />
+          <rect x="6" y="56" width="18" height="9" rx="2" fill={fgColor} />
+          <rect x="28" y="56" width="18" height="9" rx="2" fill={fgColor} />
+          <rect x="50" y="56" width="18" height="9" rx="2" fill={fgColor} />
+          <rect x="72" y="56" width="18" height="9" rx="2" fill="#EC4899" opacity="0.5" />
         </svg>
       );
     default:
@@ -200,7 +210,7 @@ export function ParadigmSwitcher({ value, onChange, className }: ParadigmSwitche
         '3': 'node-graph',
         '4': 'recipe',
         '5': 'layers',
-        '6': 'agents',
+        '6': 'studio',
       };
 
       if (keyToParadigm[e.key]) {

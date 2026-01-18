@@ -8,7 +8,7 @@ import { RadialOrbitalUI } from './components/radial-orbital';
 import { NodeGraphUI } from './components/node-graph';
 import { RecipeIngredientUI } from './components/recipe';
 import { LayersPanelUI } from './components/layers';
-import { AgentsUI } from './components/agents';
+import { StudioUI } from './components/studio';
 import { KeyboardShortcutsModal } from './components/shared/KeyboardShortcutsModal';
 import { Keyboard } from 'lucide-react';
 import './index.css';
@@ -69,8 +69,8 @@ function App() {
           return <RecipeIngredientUI />;
         case 'layers':
           return <LayersPanelUI />;
-        case 'agents':
-          return <AgentsUI />;
+        case 'studio':
+          return <StudioUI />;
         default:
           return <RecipeIngredientUI />;
       }
@@ -93,8 +93,8 @@ function App() {
     );
   };
 
-  // For dark-themed paradigms (orbital, node-graph, layers, agents)
-  const isDarkParadigm = ['orbital', 'node-graph', 'layers', 'agents'].includes(currentParadigm);
+  // For dark-themed paradigms (orbital, node-graph, layers, studio)
+  const isDarkParadigm = ['orbital', 'node-graph', 'layers', 'studio'].includes(currentParadigm);
 
   // Generation progress for header
   const isGenerating = generation.status === 'generating';
